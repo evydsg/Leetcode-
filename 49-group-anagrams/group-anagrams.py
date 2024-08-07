@@ -22,6 +22,10 @@ class Solution:
                         - Yes, append to the dictionary
                         - No, initialize
                 - Return the values of the dictionary
+            
+            Evaluate
+                - Time Complexity: O(nlogn) due to the fact that we have to traverse through the list and sort the string to use them as keys
+                - Space Complexity: O(n) for storing of the keys
         """
         if len(strs) == 0:
             return [[""]]
