@@ -8,32 +8,36 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         """
             Understand
-                - The idea is to check if there is a cycle in the Linked List
-            
-            Match
-                - Fast and slow pointer
+                - The idea is to check if the tail points to a another node instead of being null
 
+                Questions
+                    - Can we get an empty list?
+                    - Is it possible to have two cycles within one list?
+                    - What should we return if the list is empty? False?
+
+            Match  
+                - Two pointers: fast and slow
+            
             Plan
-                - Check if the head is none
-                    - return false
-                - Initialize both slow and fast pointers
-                - Traverse through the list using the a while loop and fast pointer
-                    - If slow and fast pointers are the same
-                        - Return true
-                - Return false
+                - Check if the list is empty
+                    if head is none: return None
+                - Initialize two pointers: fast and slow
+                - Traverse through the list
+                    - Move the fast two times
+                    - Move the slow one time
         """
-        
         if head is None:
-            return head
-        
+            return False
+
         slow = head
         fast = head
 
-        while fast is not None and fast.next is not None:
+        while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
 
             if slow == fast:
                 return True
-
+            
         return False
+        
