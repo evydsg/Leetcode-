@@ -1,37 +1,44 @@
 # Definition for singly-linked list.
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         """
-        Understand
-            - The idea is to merge two sorted lists
+            Understand 
+                - The idea is to return one singly linked list that merges the two lists
 
-            Question
-                - Can we have an empty list?
-                - Are we always guaranteed to have integers or can we have other type of data?
+                Questions
+                    - Can we have two empty lists?
+                    - Can we have a one empty list?
 
-        Match
-            Temporary Head
+            Match
+                - Define a new list
 
-        Plan
-            - Check if both lists are empty
-            - Check if either list1 or list2 is empty
-            - Initialize a dummy node to simplify the merge process
-            - Use a current pointer to build the new list
-            - While both lists are not empty
-                - Compare the current elements of both lists
-                - Attach the smaller element to the new list
-                - Move the pointer of the list from which the element was taken
-            - If there are remaining elements in either list, attach them to the new list
-            - Return the merged list
+            Plan
+                - Check if both lists are empty
+                - Check if one of the lists is empty
+                - Create an empty node
+                - Assign current to the empty node
+                - Traverse through the list1 and list2
+                - Check what list is not None
+
+            Evaluate
+                - Time Complexity: O(n * m) since we traverse through the two lists
+                - Space Complexity: O(n) due to the new list created
         """
-        # Create a dummy node to help with the merge process
-        tempHead = ListNode()
-        current = tempHead
+        if list1 is None and list2 is None:
+            return list1
+        
+        if list1 is None:
+            return list2
+        
+        if list2 is None:
+            return list1
+
+        mergedList = ListNode(0)
+        current = mergedList
 
         while list1 and list2:
             if list1.val < list2.val:
@@ -45,7 +52,8 @@ class Solution:
         
         if list1 is not None:
             current.next = list1
+        
         elif list2 is not None:
             current.next = list2
         
-        return tempHead.next 
+        return mergedList.next
