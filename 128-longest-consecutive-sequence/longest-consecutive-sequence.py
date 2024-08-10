@@ -22,6 +22,10 @@ class Solution:
                         - Increment length
                         - Make temporaryNumber to be equal to temporaryNumber + 1
                     - Get the max length
+            
+            Evaluate
+                - Time Complexity: O(n), since we traverse through the set
+                - Space Complexity: O(n), since we use a set to avoid having duplicates
 
         """
         set_nums = set(nums)
