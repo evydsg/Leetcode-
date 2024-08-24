@@ -1,8 +1,7 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         def bfs (row, column):
-            queue = []
-            queue.append((row, column))
+            queue = [(row, column)]
             visited.add((row, column))
 
             while queue:
