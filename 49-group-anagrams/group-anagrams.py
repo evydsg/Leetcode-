@@ -2,42 +2,35 @@ class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         """
             Understand
-                - The idea is to find the words that are anagrams
+                The idea is to find the anagrams and group them all together
 
-                Questions
-                    - Are we always guaranteed to have anagrams?
-                    - Can we have an empty list?
-                    - Are we always guaranteed to have a list with lowercase English letters?
-
+                Can we have a list with no anagrams?
+                Are we always guaranteed to receive lowercase letters?
+                Can we receive an empty list?
+            
             Match
-                - Use dictionary
+                Dictionary 
             
             Plan
-                - Check if the list is empty
-                    - Yes, return an empty array
-                - Initialize a dictionary
-                - Traverse through the list
-                    - Sort the current word to use as a key
-                    - Check if the key is in the dictionary
-                        - Yes, append to the dictionary
-                        - No, initialize
-                - Return the values of the dictionary
+                Initialize a dictionary
+                Iterate through the list
+                    Sort each word to use it as the key
+                        Check if the key already exists in the dictionary
+                    Add the key to the dictionary
+                Return the values of the dictionary as a list
             
             Evaluate
-                - Time Complexity: O(nlogn) due to the fact that we have to traverse through the list and sort the string to use them as keys
-                - Space Complexity: O(n) for storing of the keys
+                Time Complexity: O(n)
+                Space Complexity: O(n)
         """
-        if len(strs) == 0:
-            return [[""]]
-        
         dictionary = {}
 
         for word in strs:
-            key ="".join(sorted(word))
+            key = "".join(sorted(word))
 
             if key in dictionary:
                 dictionary[key].append(word)
             else:
                 dictionary[key] = [word]
         
-        return dictionary.values()
+        return list(dictionary.values())
