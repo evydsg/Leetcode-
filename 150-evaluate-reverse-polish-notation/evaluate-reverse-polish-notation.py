@@ -1,62 +1,22 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        """
-            Understand
-                The idea is to perform the arithmetic expression
-
-                Are we always guaranteed to only receive operators and operands?
-                Can we get negative integers?
-                Can we receive an empty string?
-
-            Match
-                Stack
-
-            Plan
-                Check if list is empty
-                Initialize a stack
-                Traverse through the list
-                    If it is an operator
-                        Remove the last two elements
-                        Perform the calculation
-                        Append it to the stack
-                    Else
-                        Convert to integers
-                        Insert into the stack
-                    
-        """
-        if len(tokens) == 0:
-            return 0
-        
         stack = []
+        operators = ['+', '-', '*', '/']
 
-        for string in tokens:
-            if string == '+':
-                if len(stack) >= 2:
-                    operand1 = stack.pop()
-                    operand2 = stack.pop()
-                    calculation = operand1 + operand2
-                    stack.append(calculation)
-            elif string == '-':
-                if len(stack) >= 2:
-                    operand1 = stack.pop()
-                    operand2 = stack.pop()
-                    calculation = operand2 - operand1
-                    stack.append(calculation)
-            elif string == '*':
-                    if len(stack) >= 2:
-                        operand1 = stack.pop()
-                        operand2 = stack.pop()
-                        calculation = operand2 * operand1
-                        stack.append(calculation)
-            elif string == "/":
-                if len(stack) >= 2:
-                    operand1 = stack.pop()
-                    operand2 = stack.pop()
+        for token in tokens:
+            if token in operators and len(stack) >= 2:
+                operand2 = stack.pop()
+                operand1 = stack.pop()
 
-                    if operand1 != 0:
-                        calculation = int(operand2/operand1)
-                        stack.append(calculation)
+                if token == operators[-1]:
+                    result = int(operand1 / operand2)
+                else:
+                    expression = f"{operand1}{token}{operand2}"
+                    result = eval(expression)
+                
+                stack.append(result)
             else:
-                stack.append(int(string))
-            
+                stack.append(int(token))
+        
         return stack[-1]
+        
