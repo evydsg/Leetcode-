@@ -11,12 +11,11 @@ class Solution:
                 m -= 1
             else:
                 nums1[index] = nums2[n-1]
-                n-=1
+                n -= 1
             
             index -= 1
         
         while n > 0:
             nums1[index] = nums2[n-1]
-            n -= 1
             index -= 1
-        
+            n -= 1
