@@ -1,9 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        prevDic = {}
+        prevHash = {}
 
         for index, number in enumerate(nums):
-            if (target - number) in prevDic:
-                return [prevDic[(target - number)], index]
-            
-            prevDic[number] = index
+            difference = target - number
+
+            if difference in prevHash:
+                return [prevHash[difference], index]
+            else:
+                prevHash[number] = index
