@@ -9,17 +9,15 @@ class Solution:
         if root is None:
             return False
         
-        targetSum -= root.val
-        
+        targetSum = targetSum - root.val
+
         if root.left is None and root.right is None and targetSum == 0:
             return True
         
         if self.hasPathSum(root.left, targetSum):
             return True
-        
         if self.hasPathSum(root.right, targetSum):
             return True
         
         targetSum += root.val
-
         return False
