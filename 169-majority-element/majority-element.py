@@ -1,14 +1,13 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        frequency = {}
+        count, result = 0, 0
 
         for num in nums:
-            if num in frequency:
-                frequency[num] += 1
+            if count == 0:
+                result = num
+            if num == result:
+                count += 1
             else:
-                frequency[num] = 1
+                count -= 1
         
-        for key in frequency:
-            if frequency[key] > len(nums)//2:
-                return key
-        
+        return result
