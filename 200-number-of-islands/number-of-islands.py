@@ -1,30 +1,31 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        def bfs (row, column):
-            queue = [(row, column)]
-            visited.add((row, column))
-
-            while queue:
-                row, column = queue.pop(0)
-
-                directions = [[1,0], [-1, 0], [0, 1], [0, -1]]
-
-                for dr, dc in directions:
-                    r, c = row + dr, column + dc
-
-                    if(r in range(rows) and c in range(columns) and grid[r][c] == '1' and (r, c) not in visited):
-                        queue.append((r, c))
-                        visited.add((r, c))
+        if len(grid) == 0:
+            return 0
         
+        rows, cols = len(grid), len(grid[0])
         visited = set()
         islands = 0
 
-        rows, columns = len(grid), len(grid[0])
+        def bfs(row, col):
+            queue = [(row, col)]
+            visited.add((row, col))
 
-        for row in range(rows):
-            for column in range(columns):
-                if grid[row][column] == "1" and (row, column) not in visited:
-                    bfs(row, column)
+            while queue:
+                r, c = queue.pop(0)
+                directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+
+                for dr, dc in directions:
+                    newR, newC = r + dr, c + dc
+
+                    if newR in range(rows) and newC in range(cols) and grid[newR][newC] == '1' and (newR, newC) not in visited:
+                        queue.append((newR, newC))
+                        visited.add((newR, newC))
+    
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c] == '1' and ((r, c)) not in visited:
+                    bfs(r, c)
                     islands += 1
         
         return islands
