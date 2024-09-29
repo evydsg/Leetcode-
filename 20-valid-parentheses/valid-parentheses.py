@@ -3,17 +3,17 @@ class Solution:
         stack = []
 
         for bracket in s:
-            if bracket == ")":
+            if bracket == ')':
                 if len(stack) != 0 and stack[-1] == '(':
                     stack.pop()
                 else:
                     return False
-            elif bracket == "}":
+            elif bracket == '}':
                 if len(stack) != 0 and stack[-1] == '{':
                     stack.pop()
                 else:
                     return False
-            elif bracket == "]":
+            elif bracket == ']':
                 if len(stack) != 0 and stack[-1] == '[':
                     stack.pop()
                 else:
@@ -22,4 +22,3 @@ class Solution:
                 stack.append(bracket)
         
         return len(stack) == 0
-        
