@@ -1,8 +1,7 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        index, length = 0, min(len(ransomNote), len(magazine))
         dictionaryM = {}
-       
+        
         for character in magazine:
             if character in dictionaryM:
                 dictionaryM[character] += 1
@@ -20,4 +19,3 @@ class Solution:
                 return False
         
         return True
-        
