@@ -9,11 +9,10 @@ class Solution:
         if root is None:
             return []
         
-        inorder = []
-
-        inorder += self.inorderTraversal(root.left)
-        inorder.append(root.val)
-        inorder += self.inorderTraversal(root.right)
-
-        return inorder
+        stack = []
         
+        stack += self.inorderTraversal(root.left)
+        stack.append(root.val)
+        stack += self.inorderTraversal(root.right) 
+
+        return stack
