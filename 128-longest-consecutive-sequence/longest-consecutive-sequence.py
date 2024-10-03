@@ -3,13 +3,13 @@ class Solution:
         nums = set(nums)
         result = 0
 
-        for num in nums:
-            if num - 1 not in nums:
-                current = num
+        for number in nums:
+            if number - 1 not in nums:
+                temporary = number
                 count = 1
 
-                while current + 1 in nums:
-                    current = current + 1
+                while temporary + 1 in nums:
+                    temporary = temporary + 1
                     count += 1
                 
                 result = max(count, result)
