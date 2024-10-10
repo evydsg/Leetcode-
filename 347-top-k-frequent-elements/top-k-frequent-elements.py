@@ -9,10 +9,9 @@ class Solution:
             else:
                 freqDict[num] = 1
         
-        freqDict = dict(sorted(freqDict.items(), key = lambda item:item[1], reverse = True))
-        
+        freqDict = dict(sorted(freqDict.items(), key = lambda item:item[1], reverse = True ))
+
         for key in freqDict:
             result.append(key)
         
         return result[:k]
-        
