@@ -2,10 +2,10 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         prevHash = {}
 
-        for index, number in enumerate(nums):
-            difference = target - number
+        for index, num in enumerate(nums):
+            difference = target - num
 
             if difference in prevHash:
                 return [prevHash[difference], index]
             else:
-                prevHash[number] = index
+                prevHash[num] = index
