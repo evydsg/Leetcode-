@@ -10,9 +10,17 @@ class Solution:
             return []
         
         stack = []
-        
-        stack += self.inorderTraversal(root.left)
-        stack.append(root.val)
-        stack += self.inorderTraversal(root.right) 
+        current = root
+        result = []
 
-        return stack
+        while stack or current:
+            while current:
+                stack.append(current)
+                current = current.left
+            
+            current = stack.pop()
+            result.append(current.val)
+
+            current = current.right
+        
+        return result
