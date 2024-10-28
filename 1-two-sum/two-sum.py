@@ -9,5 +9,3 @@ class Solution:
                 return [prevHash[difference], index]
             else:
                 prevHash[number] = index
-            
-        
