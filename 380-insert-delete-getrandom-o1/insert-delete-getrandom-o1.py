@@ -4,7 +4,6 @@ class RandomizedSet:
     def __init__(self):
         self.randomSet = set()
         
-
     def insert(self, val: int) -> bool:
         if val in self.randomSet:
             return False
@@ -12,10 +11,10 @@ class RandomizedSet:
             self.randomSet.add(val)
         
     def remove(self, val: int) -> bool:
-        if val in self.randomSet:
+        try:
             self.randomSet.remove(val)
             return True
-        else:
+        except KeyError:
             return False
         
     def getRandom(self) -> int:
