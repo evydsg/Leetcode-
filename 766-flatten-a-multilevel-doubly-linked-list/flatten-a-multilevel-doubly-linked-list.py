@@ -11,25 +11,28 @@ class Node:
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
         if head is None:
-            return head
+            return 
         
-        temporary = Node(0)
-        current = temporary
-        stack = [head]
+        newList = Node(0)
+        temp = newList
+        current = head
+        stack = [current]
 
         while stack:
-            temp = stack.pop()
+            multiL = stack.pop()
 
-            if temp.next:
-                stack.append(temp.next)
-            if temp.child:
-                stack.append(temp.child)
+            if multiL.next:
+                stack.append(multiL.next)
+            if multiL.child:
+                stack.append(multiL.child)
             
-            current.next = temp
-            temp.prev = current
+            temp.next = multiL
+            multiL.prev = temp
+            temp = temp.next
             temp.child = None
-            current = temp
-        
-        temporary.next.prev = None
 
-        return temporary.next
+        newList.next.prev = None
+
+        return newList.next
+
+        
