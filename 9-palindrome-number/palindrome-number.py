@@ -5,17 +5,18 @@ class Solution:
         
         divider = 1
 
-        while x >= divider * 10:
-            divider *= 10
+        while x > divider * 10:
+            divider = divider * 10
         
-        while x > 0:
-            left = x % 10 
-            right = x // divider
+        while x != 0:
+            first = x % 10
+            last = x // divider
 
-            if left != right:
+            if first != last:
                 return False
             
             x = (x % divider) // 10
-            divider = divider // 100
+            divider = divider / 100
         
         return True
+        
