@@ -1,15 +1,18 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        frequency = {}
+        if len(s) == 1:
+            return 0
 
-        for index, character in enumerate(s):
-            if character in frequency:
-                frequency[character][1] += 1
-            else:
-                frequency[character] = [index, 1]
+        dictionary = {}
         
-        for key in frequency:
-            if frequency[key][1] == 1:
-                return frequency[key][0]
+        for character in s:
+            if character in dictionary:
+                dictionary[character] += 1
+            else:
+                dictionary[character] = 1
+        
+        for index in range(len(s)):
+            if dictionary[s[index]] == 1:
+                return index
         
         return -1
