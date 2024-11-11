@@ -9,18 +9,16 @@ class Solution:
         if root is None:
             return []
         
-        stack = []
-        current = root
-        result = []
+        inorderList = []
+        def inorder(node):
+            if node is None:
+                return 
 
-        while stack or current:
-            while current:
-                stack.append(current)
-                current = current.left
-            
-            current = stack.pop()
-            result.append(current.val)
+            inorder(node.left)
+            inorderList.append(node.val)
+            inorder(node.right)
 
-            current = current.right
+        inorder(root)
+        return inorderList
+
         
-        return result
