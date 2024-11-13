@@ -9,11 +9,14 @@ class Solution:
         if root is None:
             return root
         
-        if val < root.val:
-            return self.searchBST(root.left, val)
-        elif val > root.val:
-            return self.searchBST(root.right, val)
-        else:
-            return root
+        current = root
+
+        while current:
+            if current.val == val:
+                return current
+            elif val < current.val:
+                current = current.left
+            elif val > current.val:
+                current = current.right
         
-        return root
+        return current
