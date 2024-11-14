@@ -5,22 +5,21 @@ class RandomizedSet:
         self.randomSet = set()
         
     def insert(self, val: int) -> bool:
-        if val in self.randomSet:
-            return False
-        else:
+        if val not in self.randomSet:
             self.randomSet.add(val)
-        
-    def remove(self, val: int) -> bool:
-        try:
-            self.randomSet.remove(val)
             return True
-        except KeyError:
-            return False
-        
-    def getRandom(self) -> int:
-        randomElement = random.sample(list(self.randomSet), 1)[0]
-        return randomElement
+        return False
 
+    def remove(self, val: int) -> bool:
+        if val not in self.randomSet:
+            return False
+        self.randomSet.remove(val)
+        return True
+
+    def getRandom(self) -> int:
+        index = random.randrange(0, len(self.randomSet))
+        
+        return list(self.randomSet)[index]
         
 
 
